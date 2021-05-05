@@ -1,0 +1,28 @@
+- hosts: localhost
+  roles: 
+  - name: "launching EC2 instances on AWS"
+    role: "/root/task19/launch_ec2"
+  - name: "waiting to launch ec2 instance"
+    pause: 
+      seconds: 30
+  - shell: "/inventoy/ec2.py --list"
+
+- hosts: tag_name_Kubernetes_Master
+  roles:
+  - name: "Configuring Kubernetes Master"
+    role: "/root/task19/k8s_master"
+       
+         
+- hosts: tag_name_Kubernetes_Slave
+  vars_prompt:
+  - name: "token"
+    prompt: "Enter tooken to connect with master"
+    private: no
+  roles:
+  - name: "Configuring Kubernetes Master"
+    role: "/root/task19/k8s_slave"
+
+- hosts: tag_name_Kubernetes_Master
+  roles:
+  - name: "Configuring WordPress and MySQL on the kubernetes cluster"
+    role: "/root/task19/mysql-wp
