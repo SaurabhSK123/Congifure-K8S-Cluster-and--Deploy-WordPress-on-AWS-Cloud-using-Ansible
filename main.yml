@@ -2,6 +2,8 @@
   roles: 
   - name: "launching EC2 instances on AWS"
     role: "/root/task19/launch_ec2"
+  
+  tasks:
   - name: "waiting to launch ec2 instance"
     pause: 
       seconds: 30
@@ -25,4 +27,4 @@
 - hosts: tag_name_Kubernetes_Master
   roles:
   - name: "Configuring WordPress and MySQL on the kubernetes cluster"
-    role: "/root/task19/mysql-wp
+    role: "/root/task19/mysql-wp"
