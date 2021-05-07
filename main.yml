@@ -7,7 +7,7 @@
   - name: "waiting to launch ec2 instance"
     pause: 
       seconds: 30
-  - shell: "/inventoy/ec2.py --list"
+  - shell: "python3 /inventoy/ec2.py"
 
 - hosts: tag_name_Kubernetes_Master
   roles:
